@@ -2,10 +2,6 @@ function changeColorWhenHovering(gridSquare){
     gridSquare.addEventListener("mouseover", () => {
         gridSquare.style.backgroundColor = "red";
     })
-
-    gridSquare.addEventListener("mouseout", () => {
-        gridSquare.style.backgroundColor = "white";
-    })
 }
 
 function makeGrid(){
