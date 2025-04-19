@@ -1,0 +1,24 @@
+html{
+    padding: 0px;
+}
+
+.gridContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.gridRow{
+    box-sizing: border-box;
+    height: 50px; 
+    display: flex;
+}
+
+.gridSquare{
+    border: 5px black solid;
+    height: 50px; 
+    width: 50px;
+    box-sizing: border-box;
+    flex: none;
+}
