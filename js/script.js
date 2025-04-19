@@ -1,3 +1,13 @@
+function changeColorWhenHovering(gridSquare){
+    gridSquare.addEventListener("mouseover", () => {
+        gridSquare.style.backgroundColor = "red";
+    })
+
+    gridSquare.addEventListener("mouseout", () => {
+        gridSquare.style.backgroundColor = "white";
+    })
+}
+
 function makeGrid(){
     let gridRow;
     for(let i = 0; i < 16 * 16; i++){
@@ -8,6 +18,9 @@ function makeGrid(){
         }
         const gridSquare = document.createElement("div");
         gridSquare.classList.add("gridSquare");
+
+        changeColorWhenHovering(gridSquare);
+
         gridRow.appendChild(gridSquare);
     }
 }
