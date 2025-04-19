@@ -5,10 +5,12 @@ html{
 
 body{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100%;
     margin: 0;
+    gap: 30px;
 }
 
 .gridContainer{
@@ -26,7 +28,7 @@ body{
 }
 
 .gridSquare{
-    border: 5px black solid;
+    border: 2px black solid;
     box-sizing: border-box;
     flex: 1;
 }
