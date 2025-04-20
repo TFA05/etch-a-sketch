@@ -70,4 +70,9 @@ button{
     font-weight: bold;
     border-style:groove;
     font-family: cursive;
+    margin: -1px;
+}
+
+button:hover{
+    background-color: rgb(131, 123, 94);
 }
