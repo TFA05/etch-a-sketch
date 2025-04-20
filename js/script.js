@@ -1,6 +1,6 @@
 function changeColorWhenHovering(gridSquare){
     gridSquare.addEventListener("mouseover", () => {
-        gridSquare.style.backgroundColor = "red";
+        gridSquare.style.backgroundColor = "rgb(39, 28, 2)";
     })
 }
 
@@ -21,20 +21,20 @@ function makeGrid(numSquares){
     }
 }
 
-let gridContainer;
+let gridContainer = document.querySelector(".gridContainer");
 let ratioBtn = document.querySelector(".gridRatioBtn");
-let body = document.querySelector("body");
+let gameContainer = document.querySelector(".gameContainer");
+
+makeGrid(20);
 
 ratioBtn.addEventListener("click", () => {
     let numSquares = prompt("How many squares should be per side?");
 
-    if (gridContainer){
-        gridContainer.remove();
-    }
+    gridContainer.remove();
 
     gridContainer = document.createElement("div");
     gridContainer.classList.add("gridContainer");
-    body.insertBefore(gridContainer, document.querySelector("button"));
+    gameContainer.insertBefore(gridContainer, document.querySelector(".btnsContainer"));
 
     makeGrid(numSquares);
 
