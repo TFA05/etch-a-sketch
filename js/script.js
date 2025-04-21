@@ -127,7 +127,7 @@ function toggleBorders(){
     }
     else{
         gridSquares.forEach((gridSquare) => {
-            gridSquare.style.border = "2px rgb(51, 30, 4) solid";
+            gridSquare.style.border = "1px rgb(51, 30, 4) solid";
         })
         isBordersOn = true;
     }
@@ -138,7 +138,7 @@ let clickBtn = document.querySelector(".clickToDrawBtn");
 let borderBtn = document.querySelector(".borderBtn");
 let scrollNum = document.querySelector(".scrollNumSquares");
 let rainbowBtn = document.querySelector(".rainbowBtn");
-let opacityBtn = document.querySelector(".darkerBtn");
+let opacityBtn = document.querySelector(".fadeBtn");
 
 //dark i border ruzno na pocetku
 //estetika malo maybge
