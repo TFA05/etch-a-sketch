@@ -30,7 +30,7 @@ body{
     font-size: 50px;
     border-bottom: 6px rgb(51, 30, 4) solid;
     padding: 5px;
-    font-family: Cursive;
+    font-family:'Times New Roman', Times, serif;
     font-style: italic;
 }
 
@@ -68,7 +68,7 @@ button{
     border: 3px rgb(51, 30, 4) solid;
     font-weight: bold;
     border-style:groove;
-    font-family: cursive;
+    font-family: 'Times New Roman', Times, serif;
     margin: -1px;
 }
 
@@ -88,7 +88,7 @@ button.active{
 .inputDesc{
     color: rgb(51, 30, 4);
     border-bottom: 2px rgb(51, 30, 4) solid;
-    font-family: Cursive;
+    font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
     padding-bottom: 5px;
 }
