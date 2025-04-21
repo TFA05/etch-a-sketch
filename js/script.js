@@ -87,7 +87,10 @@ function resetGrid(){
 
     makeGrid(scrollNum.value);
 
-    opacity = 0.1;
+    if (isDarkOn)
+        opacity = 0.1;
+    else
+        opacity = 1;
 }
 
 function toggleClickToDraw(){
