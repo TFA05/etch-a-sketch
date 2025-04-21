@@ -7,14 +7,45 @@ document.addEventListener("mouseup", () => {
 })
 
 function colorSquare(event){
-    event.target.style.backgroundColor = "rgb(39, 28, 2)";
+    //Prevent dragging and dropping
+    event.preventDefault();
+
+    if (isDarkOn){
+        opacity += 0.02;
+    }
+
+    if (isRainbowOn){
+        rgbArray = [
+            Math.floor(Math.random() * 255), 
+            Math.floor(Math.random() * 255), 
+            Math.floor(Math.random() * 255)]
+    }
+
+    event.target.style.backgroundColor = `rgba(${rgbArray[0]}, ${rgbArray[1]}, ${rgbArray[2]}, ${opacity})`;
 }
 
 function dragColor(event){
-    if (isMouseDown) event.target.style.backgroundColor = "rgb(39, 28, 2)";
+    //Prevent dragging and dropping
+    event.preventDefault();
+
+    if (isDarkOn && isMouseDown){
+        opacity += 0.05;
+    }
+
+    if (isRainbowOn){
+        rgbArray = [
+            Math.floor(Math.random() * 255), 
+            Math.floor(Math.random() * 255), 
+            Math.floor(Math.random() * 255)]
+    }
+
+    if (isMouseDown) {
+        event.target.style.backgroundColor = `rgba(${rgbArray[0]}, ${rgbArray[1]}, ${rgbArray[2]}, ${opacity})`;
+    }
 }
 
 function makeGrid(numSquares){
+    let gridContainer = document.querySelector(".gridContainer");
     let gridRow;
     for(let i = 0; i < numSquares**2; i++){
         if (i % numSquares == 0){
@@ -38,27 +69,30 @@ function makeGrid(numSquares){
     if (isBordersOn) {
         isBordersOn = false;
         toggleBorders();
+        borderBtn.classList.toggle("active");
     }
         
 }
 
-function changeNumSquares(){
-    let numSquares = prompt("How many squares should be per side? (1-100)");
-
-    while (numSquares > 100){
-        numSquares = prompt("The number has to be between 1 and 100")
-    }
-
+function resetGrid(){
+    let gridContainer = document.querySelector(".gridContainer");
     gridContainer.remove();
 
     gridContainer = document.createElement("div");
     gridContainer.classList.add("gridContainer");
+    let gameContainer = document.querySelector(".gameContainer");
     gameContainer.insertBefore(gridContainer, document.querySelector(".btnsContainer"));
 
-    makeGrid(numSquares);
+    document.querySelector(".rangeNumber").textContent = scrollNum.value;
+
+    makeGrid(scrollNum.value);
+
+    opacity = 0.1;
 }
 
 function toggleClickToDraw(){
+    clickBtn.classList.toggle("active");
+
     let gridSquares = document.querySelectorAll(".gridSquare");
     if (isClickToDrawOn){
         gridSquares.forEach((gridSquare) => {
@@ -82,6 +116,8 @@ function toggleClickToDraw(){
 }
 
 function toggleBorders(){
+    borderBtn.classList.toggle("active");
+
     let gridSquares = document.querySelectorAll(".gridSquare")
     if (isBordersOn){
         gridSquares.forEach((gridSquare) => {
@@ -97,20 +133,59 @@ function toggleBorders(){
     }
 }
 
-let gridContainer = document.querySelector(".gridContainer");
-let ratioBtn = document.querySelector(".gridRatioBtn");
-let gameContainer = document.querySelector(".gameContainer");
+let resetBtn = document.querySelector(".gridResetBtn");
 let clickBtn = document.querySelector(".clickToDrawBtn");
 let borderBtn = document.querySelector(".borderBtn");
+let scrollNum = document.querySelector(".scrollNumSquares");
+let rainbowBtn = document.querySelector(".rainbowBtn");
+let opacityBtn = document.querySelector(".darkerBtn");
+
+//dark i border ruzno na pocetku
+//estetika malo maybge
 
 let isClickToDrawOn = false;
 let isBordersOn = false;
+let isRainbowOn = false;
+let isDarkOn = false;
 let isMouseDown;
+
+let rgbArray = [39, 28, 2];
+let opacity = 1;
 
 makeGrid(20);
 
-ratioBtn.addEventListener("click", changeNumSquares);
+resetBtn.addEventListener("click", resetGrid);
 
 clickBtn.addEventListener("click", toggleClickToDraw);
 
 borderBtn.addEventListener("click", toggleBorders);
+
+scrollNum.addEventListener("input", resetGrid);
+
+rainbowBtn.addEventListener("click", () => {
+    rainbowBtn.classList.toggle("active");
+    
+    if(isDarkOn)
+        opacity = 0.1;
+
+    if (isRainbowOn){
+        isRainbowOn = false;
+        rgbArray = [39, 28, 2];
+    }
+    else{
+        isRainbowOn = true;
+    }
+});
+
+opacityBtn.addEventListener("click", () => {
+    opacityBtn.classList.toggle("active");
+
+    if (isDarkOn){
+        isDarkOn = false;
+        opacity = 1;
+    }
+    else{
+        isDarkOn = true;
+        opacity = 0.1;
+    }
+})

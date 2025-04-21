@@ -15,7 +15,7 @@ body{
 .gameContainer{
     border: 5px #166143 solid;
     height: 90%;
-    width: 40%;
+    width: 45%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -52,13 +52,12 @@ body{
 .gridSquare{
     box-sizing: border-box;
     flex: 1;    
-    margin: -1px;
     background-color: rgb(109, 98, 73);
 }
 
 .btnsContainer{
     display: flex;
-    gap: 10px;
+    gap: 15px;
 }
 
 button{
@@ -73,6 +72,28 @@ button{
     margin: -1px;
 }
 
-button:hover{
+button:hover,
+button.active{
     background-color: rgb(131, 123, 94);
+}
+
+.input{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.inputDesc{
+    color: rgb(51, 30, 4);
+    border-bottom: 2px rgb(51, 30, 4) solid;
+    font-family: Cursive;
+    font-weight: bold;
+    padding-bottom: 5px;
+}
+
+.rangeNumber{
+    color: rgb(51, 30, 4);
+    font-weight: bold;
 }
